@@ -1,0 +1,140 @@
+.loginp{ 
+    box-sizing: border-box;  
+    width: 456px;
+    height: 503px; 
+    
+    margin-left: 20%; 
+    margin-top: 10%;
+
+    border: 5px solid #F3C10E;
+    border-radius: 30px;
+
+}
+.email{ 
+
+    box-sizing: border-box;
+ 
+    width: 384px;
+    height: 53px; 
+   
+    margin-top: 2rem;   
+    margin-left: 0.5rem;
+
+    border: 3px solid #CACACA;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+.password{ 
+
+    box-sizing: border-box;
+    color: #FFFFFF;
+    width: 384px;
+    height: 52px; 
+   
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+
+    border: 3px solid #CACACA;
+    border-radius: 10px;
+    
+    background-color: transparent;
+}
+.login{  
+    width: 168px;
+    height: 55px; 
+    
+    margin-left: -1rem;
+    margin-top: -2rem;
+
+    background: #F3C10E;
+    border-radius: 10px;
+    border-color: transparent;
+}
+.x{ 
+    width: 95px;
+    height: 39px; 
+    margin-left: 2rem;
+    margin-top: 3rem;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px; 
+
+    color: #FFFFFF;
+}
+.y{
+    width: 223px;
+    height: 44px; 
+    
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+}
+.title{  
+    width: 483px;
+    height: 71px;
+    margin-left: 6rem;
+    margin-top: 18rem; 
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 71px; 
+
+    color: #CCCCCC; 
+}
+.desc{ 
+    width: 577px;
+    height: 80px; 
+    
+    margin-left: 6rem;
+    margin-top: 5rem; 
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+}
+.full{
+    display: flex;
+    flex-direction: row;
+    background-image: url("1.jpeg"); 
+    
+    background-repeat: no-repeat; 
+    background-size:cover;
+    padding:0%;
+    height:100vh;
+}
+.l{
+     
+    margin-left: -8rem;
+    width: 223px;
+    height: 44px; 
+     
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+
+}
+.sign{
+    background-color: transparent;
+    color:  #F3C10E;
+    margin-left: 2rem;
+}

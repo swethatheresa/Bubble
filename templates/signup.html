@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+  </head>
+  <body style="background-color: black;">
+    <div class="main">
+      <div class="text">
+        <div class="heading"><pre>Sign Up</pre></div>
+        <div><button class="home">Home</button></div>
+      </div> 
+      <form action="" method="POST">
+        {% csrf_token %}
+
+          {% for field in form %}
+          <div class="container">
+            <label for="sign_upfield">Enter your {{field.label}}</label>
+            {{field}}
+          </div>
+          <br></br>
+          {% endfor %}
+
+        <br>
+        <br>
+        <button class="signup">Sign Up</button>
+      </form>
+</div>
+</body>
+</html>

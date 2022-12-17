@@ -1,0 +1,100 @@
+.a{
+    display: flex;
+    flex-direction: row;
+    height: 8.5rem;
+    background-color:black;
+}
+.talkrooms{
+    width: 50rem;
+    background-color:black;
+}
+.talkroom{  
+    margin-left: 2rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 71px; 
+    color: #F3C10E;
+}
+.desc2{ 
+    width: 577px;
+    height: 20px; 
+    
+    margin-left: 2rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px; 
+    color: #FFFFFF;
+}
+.search{
+    width: 30rem;
+    background-color: black;
+    display: flex;
+    flex-direction: row; 
+}
+.create{
+    width: 20rem;
+    background-color: black;
+}
+.q{ 
+    left: 12.5%;
+    right: 14.17%;
+    top: 12.5%;
+    bottom: 14.27%;
+    background-color: transparent;
+    background: #F8F8F8;
+}
+.w{
+    background-color:black; 
+    
+    width: 284px;
+    height: 54px; 
+      
+    border: 3px solid #CACACA;
+    border-radius: 20px;
+    margin-left: 0rem;
+    margin-top: 3rem;
+    color: #FFFFFF;
+}
+.t{ 
+    width: 124px;
+    height: 20px;  
+    margin-top: 0.5rem; 
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px; 
+    background-color: transparent;
+    color: #FFFFFF;
+}
+.s{
+    background-color:transparent; 
+    
+    width: 50px;
+    height: 54px; 
+      
+    border: 3px solid #F3C10E;
+    border-radius: 20px;
+    margin-left: 0rem;
+    margin-top: 3rem;
+    color: #FFFFFF;
+}
+.createroom{ 
+    width: 185px;
+    height: 55px;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    background: #F3C10E;
+    border-radius: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px; 
+    color: #000000;
+}
