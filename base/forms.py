@@ -14,10 +14,11 @@ class RoomForm(ModelForm):
         fields = '__all__'
         exclude = ['host', 'participants']
 
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
+        exclude = ['host', 'created']
 
-# class UserForm(ModelForm):
-#     the_choices = ModelMultipleChoiceField(queryset=Topic.objects.all(), required=False, widget=CheckboxSelectMultiple)
-#     class Meta:
-#         model = User
-#         fields = '__all__'
+
         

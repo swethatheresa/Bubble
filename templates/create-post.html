@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Post</title>
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+  </head>
+  <body style="background-color: black;">
+    <div class="main">
+      <div class="text">
+        <div class="heading"><pre>Create Post</pre></div>
+         
+         
+      </div> 
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}          
+          <div class="container">
+            <label for="room_topic">Enter a Topic</label>
+            <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" />
+            <datalist id="topic-list">
+              <select id="room_topic">
+                {% for topic in topics %}
+                <option value="{{topic.name}}">{{topic.name}}</option>
+                {% endfor %}
+              </select>
+            </datalist>
+          </div>
+          <br></br>
+          <div class="container">
+            <label for="room_image">Upload Image</label>
+            {{form.image}}
+          </div>
+          <br></br>
+          <div class="container">
+            <label for="room_caption">Enter your Caption</label>
+            {{form.caption}}
+          </div>
+          <br></br>
+          <div class="container">
+            <label for="room_city">Enter City</label>
+            {{form.city}}
+          </div>
+          <br></br>
+        <br>
+        <br>
+        <button class="signup">Submit</button>
+      </form>
+</div>
+</body>
+</html>

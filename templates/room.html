@@ -47,12 +47,12 @@
         {% for room in rooms %}
         <div class="column">
             <div >
-                <button class="btn"><a style="color:white;text-decoration:none ;" href="">{{room.name}}</a>
+                <button class="btn"><a href="{% url 'room_details' room.id %}"style="color:white;text-decoration:none ;" >{{room.name}}</a>
                     <h1 class="h">Hosted by {{room.host.email}}</h1></button>            
             </div>
             <div class="row">
                 <h1 class="ml2">{{room.participants.all.count}} joined</h1>
-                <a class="join" style="margin-top: .5rem;margin-left: -15rem;">Join</a>
+                <a href="{% url 'join' room.id %}" class="join" style="margin-top: .5rem;margin-left: -15rem;">Join</a>
             </div>
         </div>
         {% endfor %}  

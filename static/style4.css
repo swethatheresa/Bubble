@@ -1,0 +1,201 @@
+.one{
+    width: 250%;
+    height: 50rem;
+    background-color: black;
+}
+.two{ 
+    background: linear-gradient(179.56deg, #F3C10E -26.72%, #000000 99.62%);
+    width: 100%;
+    height: 50rem;
+}
+.bo{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.neural{
+    margin-top: 3rem;
+    margin-left: 3rem;
+   
+    width: 298px;
+    height: 78px; 
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+
+    color: #FFFFFF;
+}
+.h{ 
+width: 209px;
+height: 24px; 
+margin-left: 3rem;
+   
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #CACACA;
+
+
+}
+.c{ 
+width: 98px;
+height: 24px;
+margin-left: 3rem; 
+margin-top: 2rem;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.d{
+    width: 209px;
+    height: 24px; 
+    margin-left: 1rem;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #CACACA;
+
+    margin-top: 0.5rem;
+}
+.xy{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px; 
+    margin-left: 65rem;
+    color: #CACACA;
+}
+.other{  
+   
+width: 94px;
+height: 20px; 
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px; 
+
+color: #F3C10E;
+margin-left: 3rem;
+
+}
+.me{ 
+    margin-left: 40rem;
+    margin-top: 6rem;
+} 
+.textarea {  
+    
+  display: block;
+  width: 80%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+
+    border: 2px solid #D9D9D9;
+    border-radius: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 3rem;
+    color: #FFFFFF;
+    margin-top: 38rem;
+    background-color: transparent;
+  }
+  .textarea[contenteditable]:empty::before {
+    content: "Type...";
+    color: gray;
+  }   
+  .s{
+    background-color:transparent; 
+    
+    width: 30px;
+    height: 30px; 
+      
+    border: 3px solid #F3C10E;
+    border-radius: 30px;
+    margin-left: 58rem;
+    margin-top: -3.5rem;
+    color: #FFFFFF;
+}
+.label1{ 
+    display: block;
+  width: 22rem;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+margin-left: 3rem;
+border: 2px solid #D9D9D9;
+border-radius: 10px; 
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+
+color: #FFFFFF;
+padding: 7px;
+
+
+}
+.label2{
+    display: block;
+    width: 22rem;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+    
+  border-color: transparent;
+  border-radius: 10px;
+   padding: 7px;
+  
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  
+  color:black;  
+  background-color: #F3C10E;
+  
+}
+.pos{  
+    margin-top: -9rem;
+}
+.desc3{ 
+    margin-left: 3rem;
+ 
+width: 299px;
+height: 62px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+
+color: #000000;
+}

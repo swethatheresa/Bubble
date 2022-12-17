@@ -2,15 +2,15 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('signin/', views.sign_in, name="signin"),
-    # path('logout/', views.logoutUser, name="logout"),
+    path('', views.sign_in, name="signin"),
+    path('logout/', views.logoutUser, name="logout"),
     path('signup/', views.sign_up, name="signup"),
+    path('join/<str:pk>/', views.join, name="join"),
+    path('room/<str:pk>/', views.room_details, name="room_details"),
+    path('home/',views.home, name="home"),
     path('room/', views.room, name="room"),
-    #path('room/<str:pk>/', views.room, name="room"),
-    # path('', views.home, name="home"),
-    # path('profile/<str:pk>/', views.userProfile, name="user-profile"),
-
     path('create-room/', views.createRoom, name="create-room"),
+    path('create-post/', views.createPost, name="create-post"),
     # path('update-room/<str:pk>/', views.updateRoom, name="update-room"),
     # path('delete-room/<str:pk>/', views.deleteRoom, name="delete-room"),
     # path('delete-message/<str:pk>/', views.deleteMessage, name="delete-message"),

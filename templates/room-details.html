@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="{% static 'style4.css' %}">
+    <title>Document</title>
+</head>
+<body class="bo" style="background-color:black;">
+    <div class="one"> 
+        <br>
+        <br>
+        <a style="text-decoration: none;" href="{% url 'room' %}"class="xy">X</a>
+
+        {% for message in room_messages %}
+
+        {% if request.user != message.user %}
+        <div class="other">
+            <div class="row">
+            <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            </div>
+            <div>
+            <h1 class="d" style="color: #F3C10E;">{{message.user}}</h1>
+            </div>
+            </div>
+            <div>
+                <label for="html" class="label1">{{message.body}}</label>
+            </div>
+        </div>
+        {% else %} 
+
+        <div class="me">
+            <label for="html" class="label2">{{message.body}}</label>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="pos">
+        <form method="POST" action="">
+            {% csrf_token %}
+        
+        <input name="body" class="textarea" style="background-color: transparent;">
+        <button class="s">
+            <center>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#F3C10E" class="bi bi-send-fill" viewBox="0 0 16 16" style="margin-left: -0.1rem;margin-top:.5rem">
+                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                </svg>
+            </center>
+        </button> 
+        </form>
+        </div>
+    </div>
+
+    <div class="two">
+        <h1 class="neural">{{room.name}}</h1>
+        <h1 class="h">Hosted by {{room.host.username}}</h1>
+        <br>
+        <p class="desc3">{{room.description}}</p>
+        
+        <h1 class="c">Members</h1>
+        <br>
+
+        {% for user in participants %}
+        <div class="row">
+            <div style="margin-left: 2rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </div>
+            <div><h1 class="d">{{user.email}}</h1></div>
+        </div>
+        <hr style="background-color: black;border-color: transparent;height: 0px;">
+        {% endfor %}
+
+    </div>
+</body>
+</html>

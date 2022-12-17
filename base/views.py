@@ -9,8 +9,7 @@ from .forms import *
 
 def sign_in(request):
     if request.user.is_authenticated:
-        #return redirect('home')
-        return HttpResponse('success')
+        return redirect('home')
 
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -25,8 +24,7 @@ def sign_in(request):
 
         if user is not None:
             login(request, user)
-            #return redirect('home')
-            return HttpResponse('success')
+            return redirect('home')
         else:
             messages.error(request, 'Username OR password does not exit')
 
@@ -37,6 +35,41 @@ def logoutUser(request):
     logout(request)
     return redirect('signin')
 
+def home(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    if(q!=''):
+        posts = Post.objects.filter(
+            Q(topic__name__icontains=q) |
+            Q(caption__icontains=q)
+        )
+    else:
+        # posts = Post.objects.filter(
+        #     Q(topic__name__icontains=request.user.fields_of_interests) |
+        #     Q(city__icontains=request.user.city)
+        # )
+        posts = Post.objects.all()
+    context = {'posts':posts}
+    return render(request, 'home.html', context)
+
+@login_required(login_url='signin')
+def createPost(request):
+    form = PostForm()
+    topics = Topic.objects.all()
+    if request.method == 'POST':
+        topic_name = request.POST.get('topic')
+        topic,created = Topic.objects.get_or_create(name=topic_name)
+
+        Post.objects.create(
+            host=request.user,
+            topic=topic,
+            caption=request.POST.get('caption'),
+            image=request.POST.get('image'),
+            city=request.POST.get('city'),
+        )
+        return redirect('home')
+
+    context = {'form': form, 'topics': topics}
+    return render(request, 'create-post.html', context)
 
 def sign_up(request):
     form = MyUserCreationForm()
@@ -98,8 +131,7 @@ def createRoom(request):
 @login_required(login_url='signin')
 def join(request,pk):
     room=Room.objects.get(id=pk)
-    room.participants.add(User)
-    room_messages = room.message_set.all()
+    room_messages = room.message_set.all()[0:50]
     participants = room.participants.all()
     room.participants.add(request.user)
     request.user.fields_of_interests.add(room.topic)
@@ -110,16 +142,16 @@ def join(request,pk):
             body=request.POST.get('body')
         )
         room.participants.add(request.user)
-        return redirect('room', pk=room.id)
+        return redirect('room_details', pk=room.id)
 
     context = {'room': room, 'room_messages': room_messages,
-               'participants': participants}
-    context={}
-    return render(request, 'room.html', context)
+               'participants': participants,}
+    return render(request,'room-details.html',context)
+
 
 def room_details(request, pk):
     room = Room.objects.get(id=pk)
-    room_messages = room.message_set.all()
+    room_messages = room.message_set.all()[0:50]
     participants = room.participants.all()
 
     if request.method == 'POST':
@@ -128,9 +160,8 @@ def room_details(request, pk):
             room=room,
             body=request.POST.get('body')
         )
-        return redirect('room', pk=room.id)
+        return redirect('room_details',pk=room.id)
 
     context = {'room': room, 'room_messages': room_messages,
-               'participants': participants}
-    context={}
-    return render(request, 'room.html', context)
+               'participants': participants,}
+    return render(request, 'room-details.html', context)
