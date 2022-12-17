@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="{% static 'style3.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
@@ -12,13 +13,15 @@
     <div class="a">
         <div class="talkrooms">
             <h1 class="talkroom">Talk Rooms</h1>
-            <p class="desc2">Select the field you are interested in  and  share your thoughts.</p>
+            <p class="desc2">Select the field you are interested in and share your thoughts.</p>
         </div>
+        <form action="{% url 'room' %}" method="GET">
         <div class="search">  
-                 
+                
                 <div >
-                    <input type="text" placeholder="Search" class="w">
+                    <input name="q" type="text" placeholder="Search" class="w">
                 </div>
+                 
                 <spacer type="horizontal" width="100" height="100">rhj</spacer>
                 <div class="s">
                 <center>
@@ -29,9 +32,34 @@
                 </div>
                  
         </div>
+    </form>
         <div class="create">
-            <button class="createroom"><span>+ Create room</span></button>
+            <a class="createroom"  style="text-decoration:none ;"href="{% url 'create-room' %}"><span >+ Create room</span></a>
         </div>
+        <div><a class="home" href="{% url 'signin' %}">Home</a></div>
+    </div >
+    <h1 class="ml1">{{title}}</h1>
+    <h1 class="rm">{{room_count}} Rooms Available</h1>
+    
+
+    
+    <div class="grid">
+        {% for room in rooms %}
+        <div class="column">
+            <div >
+                <button class="btn"><a style="color:white;text-decoration:none ;" href="">{{room.name}}</a>
+                    <h1 class="h">Hosted by {{room.host.email}}</h1></button>            
+            </div>
+            <div class="row">
+                <h1 class="ml2">{{room.participants.all.count}} joined</h1>
+                <a class="join" style="margin-top: .5rem;margin-left: -15rem;">Join</a>
+            </div>
+        </div>
+        {% endfor %}  
+    </div>
+    
+
+    
     </div>
 </body>
 </html>

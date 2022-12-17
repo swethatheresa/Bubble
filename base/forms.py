@@ -4,11 +4,9 @@ from .models import *
 
 
 class MyUserCreationForm(UserCreationForm):
-    fields_of_interests = ModelMultipleChoiceField(queryset=Topic.objects.all(), required=False, widget=CheckboxSelectMultiple)
     class Meta:
         model = User
-        fields = ['name','email','college','city',]
-
+        fields = ['name','email','college','city']
 
 class RoomForm(ModelForm):
     class Meta:

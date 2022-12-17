@@ -12,7 +12,7 @@ class User(AbstractUser):
     email = models.CharField(max_length=50,unique=True, null=True)
     college= models.CharField(max_length=50, null=True)
     city= models.CharField(max_length=50, null=True)
-    interest=models.ManyToManyField(
+    fields_of_interests=models.ManyToManyField(
         Topic, related_name='topics',blank=True)
 
     USERNAME_FIELD = 'email'
@@ -26,7 +26,7 @@ class Room(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)
+    description = models.CharField(max_length=200,null=True, blank=True)
     participants = models.ManyToManyField(
         User, related_name='participants', blank=True)
 

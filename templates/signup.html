@@ -10,7 +10,8 @@
     <div class="main">
       <div class="text">
         <div class="heading"><pre>Sign Up</pre></div>
-        <div><button class="home">Home</button></div>
+         <div><a href="{% url 'signin' %}" class="home" >Home</a></div>
+         
       </div> 
       <form action="" method="POST">
         {% csrf_token %}

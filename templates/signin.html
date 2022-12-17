@@ -15,16 +15,17 @@
             <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </p>
         </div>
         <div class="loginp">
-            <form action="" >            
+            <form action="" method="POST">      
+                {% csrf_token %}      
                 <h1 class="x"><pre>Sign In</pre></h1>
                 <h1 class="y">Login with your credentials</h1>
                 <center class="square"> 
                 <div class="">
-                    <input type="text" placeholder="e-mail" class="email"/> 
+                    <input type="text" name="email" placeholder="e-mail" class="email"/> 
                 <br></br>
-                    <input type="password" placeholder="password" class="password" /> 
+                    <input type="password" name="password" placeholder="password" class="password" /> 
                 <br></br>
-                <pre class="l">Don't have an account ?<button class="sign">Sign Up</button></pre>
+                <pre class="l">Don't have an account ?<a href="{% url 'signup' %}" class="sign">Sign Up</a></pre>
                 <Link><button type="submit" class="login">LOGIN</button></Link>
                 </div>
                 </center> 
