@@ -20,5 +20,9 @@ class PostForm(ModelForm):
         fields = '__all__'
         exclude = ['room_id','host', 'created']
 
+class EventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ['topic','year','month','day']
 
         

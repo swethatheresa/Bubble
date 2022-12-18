@@ -6,6 +6,16 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from .forms import *
+import pickle
+from datetime import datetime,timedelta
+import googleapiclient
+import sys
+import json
+
+from apiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+
+temp={"installed":{"client_id":"676601264874-fke3t7c0otbu3ds86rt63j2e1v4cgrkg.apps.googleusercontent.com","project_id":"tink-her-hack","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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","redirect_uris":["http://localhost"]}}
 
 def sign_in(request):
     if request.user.is_authenticated:
@@ -36,10 +46,12 @@ def logoutUser(request):
     return redirect('signin')
 
 def home(request):
-    rooms = Room.objects.all()
+    rooms = Room.objects.filter(host=request.user)
+    print(request.user)
+    events=Event.objects.filter(user=request.user)
+    print(events)
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     interests=request.user.fields_of_interests.all()
-    print(interests)
     if(q!=''):
         posts = Post.objects.filter(
             Q(topic__name__icontains=q) &
@@ -53,7 +65,7 @@ def home(request):
                 Q(city__icontains=request.user.city)
             )
         
-    context = {'posts':posts,'rooms':rooms}
+    context = {'events':events,'posts':posts,'rooms':rooms}
     return render(request, 'home.html', context)
 
 @login_required(login_url='signin')
@@ -82,6 +94,22 @@ def createPost(request):
         return redirect('home')
     context = {'form': form, 'topics': topics}
     return render(request, 'create-post.html', context)
+
+def createSchedule(request):
+    form = EventForm()
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.user = request.user
+            form.user = request.user
+            form.save_m2m()
+            event.save()
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occurred during registration')
+    return render(request, 'schedule-event.html', {'form': form})
+
 
 def sign_up(request):
     form = MyUserCreationForm()
@@ -115,7 +143,7 @@ def room(request):
 
     room_count = rooms.count()
     room_messages = Message.objects.filter(
-        Q(room__topic__name__icontains=q))[0:3]
+        Q(room__topic__name__icontains=q))[0:30]
 
     context = {'title':title,'rooms': rooms,'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'room.html', context)

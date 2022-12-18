@@ -12,7 +12,7 @@
 <body style="background-color: #000000;">
     <div class="row">
         <div class="one" style="width: 450px;height: 1600px;background-color: #3a3938;">
-            <div class="row" style="margin-left: 3rem;margin-top: 3rem;">
+            <div class="row" style="margin-left: 1rem;margin-top: 3rem;">
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -38,13 +38,16 @@
             </div>
 
              
-            <h1 class="d" style="margin-left: 3rem;margin-top: 5rem;color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 24px;line-height: 29px;"><pre>Talkrooms Joined</pre></h1>
+            <h1 class="d" style="margin-left: 3rem;margin-top: 5rem;color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 24px;line-height: 29px;"><pre>Talkrooms Hosted</pre></h1>
+            
+            {% for room in rooms %}
             <div class="grid">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#F3C10E" class="bi bi-dot" viewBox="0 0 16 16">
                 <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
             </svg>
-            <h1 class="l" style="margin-top: -.5rem;margin-left: -9rem;"><pre>Nueral Networking</pre></h1>
+            <h1 class="l" style="margin-top: 0rem;margin-left: -9rem;"><a href="{% url 'room_details' room.id %}" style="color:white;font-family: 'Montserrat';font-style: normal;font-weight: 300;font-size: 16px;line-height: 29px;text-decoration:none;">{{room.topic}}</a></h1>
             </div>
+            {% endfor %}
 
             <div class="map" style="background-color: #3a3938;;">
                 <iframe src="https://maps.google.com/maps?q={{request.user.city}}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width=300 height=250></iframe>
@@ -97,8 +100,8 @@
                 </div>
             </div>  
         <div style="margin-left: 30rem;margin-top: 2rem;">
-            <a href="{% url 'join' post.room_id %}" style="font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 14px;line-height: 17px;color: #000000;"class="jt">Join Talkroom</a>
-            <a class="se">Schedule event</a>
+            <a href="{% url 'join' post.room_id %}" style="text-decoration:none;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 14px;line-height: 17px;color: #000000;"class="jt">Join Talkroom</a>
+            <a href="{% url 'schedule-event' %}" style="text-decoration:none;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 14px;line-height: 17px;color: #ffffff;"class="se">Schedule event</a>
         </div>
 
         <div>
@@ -113,19 +116,23 @@
             </div>
             <div class="cal" style="font-size:28px;font-weight:700;">Calender</div>
             <div class="map" style="background-color: #201F1C;margin-top: 0rem;">
-                <a target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NDlhcm1uZTJ2aXB0cHBiNmNlZ2I4NmU3Z2MgNTFiOGUxYTlkYjgxNjFiNGNmNzhkYTlkYmE4MDJiNDMzNWE5YjY1YTFhYTNmOTU1Njg3NGFmNDc2ZWFlOTNlNkBn&amp;tmsrc=51b8e1a9db8161b4cf78da9dba802b4335a9b65a1aa3f9556874af476eae93e6%40group.calendar.google.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif"></a>
+                <!-- <a target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NDlhcm1uZTJ2aXB0cHBiNmNlZ2I4NmU3Z2MgNTFiOGUxYTlkYjgxNjFiNGNmNzhkYTlkYmE4MDJiNDMzNWE5YjY1YTFhYTNmOTU1Njg3NGFmNDc2ZWFlOTNlNkBn&amp;tmsrc=51b8e1a9db8161b4cf78da9dba802b4335a9b65a1aa3f9556874af476eae93e6%40group.calendar.google.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif"></a> -->
                 <!-- <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23000000&ctz=Asia%2FKolkata&showTitle=0&showPrint=0&showCalendars=0&showTz=0&showNav=1&showTabs=0&src=NTFiOGUxYTlkYjgxNjFiNGNmNzhkYTlkYmE4MDJiNDMzNWE5YjY1YTFhYTNmOTU1Njg3NGFmNDc2ZWFlOTNlNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23D81B60" style="border-width:0" width="230" height="200" frameborder="0" scrolling="no"></iframe> -->
-                <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23000000&ctz=Asia%2FKolkata&showTitle=0&showPrint=0&showCalendars=0&showTz=0&showNav=1&showTabs=0&src={{post.host.email}}&color=%23D81B60" style="border-width:0" width="230" height="200" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23000000&ctz=Asia%2FKolkata&showTitle=0&showPrint=0&showCalendars=0&showTz=0&showNav=1&showTabs=0&src={{request.user.email}}&color=%23D81B60" style="border-width:0" width="230" height="200" frameborder="0" scrolling="no"></iframe>
             </div>
             <h1 class="events"><pre>Events :</pre></h1>
+            {% for event in events %}
+            <div>
             <div class="row" style="justify-content: space-between;margin-left: 2rem;">
                 <div>
-                    <h1 class="date" style="margin-top: .5rem;"><pre>10 DEC</pre></h1>
+                    <h1 class="date" style="margin-top: .5rem;"><pre>{{event.day}}-{{event.month}}-{{event.year}}</pre></h1>
                 </div> 
                 <div >
-                    <h1 class="l" style="margin-top: 1.2rem;"><pre>Nueral technology</pre></h1>
+                    <h1 class="l" style="margin-top: 1.2rem;"><pre>    :{{event.topic}}</pre></h1>
                 </div>
             </div>
+        </div>
+            {% endfor %}
         </div>
     </div>
 </body>

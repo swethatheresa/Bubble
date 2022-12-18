@@ -3,48 +3,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Schedule Event</title>
+    <title>Create Schedule</title>
     <link rel="stylesheet" href="{% static 'style2.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   </head>
-  <body>
-    <div class="main" style="background-color: black;">
-      <div class="text">
-        <!-- <div class="heading"><pre>Schedule Event</pre></div> -->
+  <body style="background-color: black;">
+    <div class="main">
+      <div class="text"> 
         <div class="heading" style="display: flex;flex-direction: row;"><pre style="color: white;font-family: Montserrat;font-style: normal;
-            font-weight: 700;
-            font-size: 58px;
-            line-height: 71px;">Schedule</pre><pre style="color: #F3C10E;font-family: Montserrat;font-style: normal;
-            font-weight: 700;
-            font-size: 58px;
-            line-height: 71px;"> Event</pre></div>
+          font-weight: 700;
+          font-size: 58px;
+          line-height: 71px;">Create</pre><pre style="color: #F3C10E;font-family: Montserrat;font-style: normal;
+          font-weight: 700;
+          font-size: 58px;
+          line-height: 71px;"> Schedule</pre></div>
+        <div class="home" style="text-align: center;
+         border-color: transparent;"><a href="{% url 'signin' %}" style="text-decoration: none;color: white;margin-bottom: 30%;margin-left: 3rem;">Home</a></div>
+         
       </div> 
-      <form action="">
-        <div class="container">
-            
-            <label for="Name" >Enter your Name</label>
-            <br>
-            <input type="text" placeholder="Name" name="name" class="">
-            <br>
-            
-            <label for="starttime">Enter Start Time</label>
-            <br>
-            <input type="text" placeholder="Start-Time" name="starttime">
-            
-            <br>
-            
-            <label for="endtime">Enter End Time</label>
-            <br>
-            <input type="password" placeholder="End-Time" name="endtime">
-            <br>
-            
+      <form action="" method="POST">
+      {% csrf_token %}
 
-            <label for="date">Enter Date</label>
-            <br>
-            <input type="text" placeholder="Date" name="date" >
-            <br>
-
-        </div>
+          {% for field in form %}
+          <div class="container">
+            <label for="event_field">Enter your {{field.label}}</label>
+            {{field}}
+          </div>
+          
+          <br></br>
+          {% for error in field.errors %}
+          <div class="container">
+            <label for="event_field">{{error}}}}</label>
+          </div>
+          {% endfor %}
+          {% endfor %}
         <br>
         <br>
         <button class="signup">Schedule</button>

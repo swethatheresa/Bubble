@@ -54,10 +54,20 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     topic=models.ForeignKey(Topic, on_delete=models.SET_NULL,null=True)
     city=models.CharField(max_length=50)
-    room_id=models.IntegerField(null=True);
+    room_id=models.IntegerField(null=True)
 
     class Meta:
         ordering = ['-created']
 
     def __str__(self):
         return self.caption[0:50]
+
+class Event(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    topic = models.CharField(max_length=200)
+    year = models.CharField(max_length=20)
+    month = models.CharField(max_length=20)
+    day = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.topic
