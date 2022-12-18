@@ -49,11 +49,12 @@ class Message(models.Model):
 
 class Post(models.Model):
     host = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='')
     caption = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     topic=models.ForeignKey(Topic, on_delete=models.SET_NULL,null=True)
     city=models.CharField(max_length=50)
+    room_id=models.IntegerField(null=True);
 
     class Meta:
         ordering = ['-created']

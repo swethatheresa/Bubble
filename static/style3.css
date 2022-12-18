@@ -33,7 +33,7 @@
     width: 30rem;
     background-color: black;
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
 }
 .create{
     width: 20rem; 
@@ -77,7 +77,7 @@
     width: 50px;
     height: 54px; 
       
-    border: 3px solid #F3C10E;
+    
     border-radius: 20px;
     margin-right: -5rem;
     margin-top: 3rem;
@@ -85,8 +85,8 @@
 }
 .createroom{ 
     width: 185px;
-    height: 55px;
-    margin-top: 13rem;
+    height: 45px;
+    margin-top: 5rem;
     margin-left: 3rem;
     background: #F3C10E;
     border-radius: 10px;

@@ -18,7 +18,7 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
-        exclude = ['host', 'created']
+        exclude = ['room_id','host', 'created']
 
 
         

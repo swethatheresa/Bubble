@@ -36,19 +36,24 @@ def logoutUser(request):
     return redirect('signin')
 
 def home(request):
+    rooms = Room.objects.all()
     q = request.GET.get('q') if request.GET.get('q') != None else ''
+    interests=request.user.fields_of_interests.all()
+    print(interests)
     if(q!=''):
         posts = Post.objects.filter(
-            Q(topic__name__icontains=q) |
-            Q(caption__icontains=q)
+            Q(topic__name__icontains=q) &
+            Q(city__icontains=request.user.city)
         )
     else:
-        # posts = Post.objects.filter(
-        #     Q(topic__name__icontains=request.user.fields_of_interests) |
-        #     Q(city__icontains=request.user.city)
-        # )
-        posts = Post.objects.all()
-    context = {'posts':posts}
+        posts = Post.objects.none()
+        for interest in interests:
+            posts |= Post.objects.filter(
+                Q(topic__name__icontains=interest) &
+                Q(city__icontains=request.user.city)
+            )
+        
+    context = {'posts':posts,'rooms':rooms}
     return render(request, 'home.html', context)
 
 @login_required(login_url='signin')
@@ -56,18 +61,25 @@ def createPost(request):
     form = PostForm()
     topics = Topic.objects.all()
     if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES)
         topic_name = request.POST.get('topic')
         topic,created = Topic.objects.get_or_create(name=topic_name)
-
+        new=Room.objects.create(
+            host=request.user,
+            topic=topic,
+            name='TalkRoom For Workshop',
+            description=request.POST.get('caption'),
+        )
         Post.objects.create(
             host=request.user,
             topic=topic,
             caption=request.POST.get('caption'),
-            image=request.POST.get('image'),
+            image=request.FILES.get('image'),
             city=request.POST.get('city'),
+            room_id=new.id
         )
+        
         return redirect('home')
-
     context = {'form': form, 'topics': topics}
     return render(request, 'create-post.html', context)
 
@@ -75,16 +87,15 @@ def sign_up(request):
     form = MyUserCreationForm()
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
-        print(form)
         if form.is_valid():
-            print(form)
             user = form.save(commit=False)
             user.username = user.email
-            user.save()
+            form.username = user.email
             form.save_m2m()
-            login(request, user)
-            return HttpResponse('success')
-            #return redirect('home')
+            user.save()
+            
+            login(request,user)
+            return redirect('home')
         else:
             messages.error(request, 'An error occurred during registration')
     return render(request, 'signup.html', {'form': form})

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="stylesheet" href="{% static 'style4.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <title>Document</title>
 </head>
 <body class="bo" style="background-color:black;">
@@ -17,6 +18,7 @@
         {% for message in room_messages %}
 
         {% if request.user != message.user %}
+        <div style="height: 80px;">jkh</div>
         <div class="other">
             <div class="row">
             <div>
@@ -34,8 +36,8 @@
             </div>
         </div>
         {% else %} 
-
-        <div class="me">
+        <div style="height:2px"></div>
+        <div class="me" style="margin-left: 45rem;">
             <label for="html" class="label2">{{message.body}}</label>
         </div>
         {% endif %}
@@ -43,15 +45,18 @@
         <div class="pos">
         <form method="POST" action="">
             {% csrf_token %}
-        
-        <input name="body" class="textarea" style="background-color: transparent;">
-        <button class="s">
+        <div style="background-color:transparent;width: 63rem;height: 4rem;margin-top: 10rem;">
+          <div style="position: absolute;">
+        <input name="body" class="textarea" style="background-color: black;height: 2rem;">
+        <div class="s" style="margin-top: -2.75rem;margin-left: 55rem;">
             <center>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#F3C10E" class="bi bi-send-fill" viewBox="0 0 16 16" style="margin-left: -0.1rem;margin-top:.5rem">
                     <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
                 </svg>
             </center>
-        </button> 
+        </div> 
+         </div> 
+        </div>
         </form>
         </div>
     </div>
@@ -61,7 +66,7 @@
         <h1 class="h">Hosted by {{room.host.username}}</h1>
         <br>
         <p class="desc3">{{room.description}}</p>
-        
+        <br>
         <h1 class="c">Members</h1>
         <br>
 

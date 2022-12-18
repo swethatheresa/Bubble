@@ -5,25 +5,38 @@
     <meta charset="UTF-8" />
     <title>Sign Up</title>
     <link rel="stylesheet" href="{% static 'style2.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   </head>
   <body style="background-color: black;">
     <div class="main">
-      <div class="text">
-        <div class="heading"><pre>Sign Up</pre></div>
-         <div><a href="{% url 'signin' %}" class="home" >Home</a></div>
+      <div class="text"> 
+        <div class="heading" style="display: flex;flex-direction: row;"><pre style="color: white;font-family: Montserrat;font-style: normal;
+          font-weight: 700;
+          font-size: 58px;
+          line-height: 71px;">Sign</pre><pre style="color: #F3C10E;font-family: Montserrat;font-style: normal;
+          font-weight: 700;
+          font-size: 58px;
+          line-height: 71px;"> Up</pre></div>
+        <div class="home" style="text-align: center;
+         border-color: transparent;"><a href="{% url 'signin' %}" style="text-decoration: none;color: white;margin-bottom: 30%;margin-left: 3rem;">Home</a></div>
          
       </div> 
       <form action="" method="POST">
-        {% csrf_token %}
+      {% csrf_token %}
 
           {% for field in form %}
           <div class="container">
             <label for="sign_upfield">Enter your {{field.label}}</label>
             {{field}}
           </div>
+          
           <br></br>
+          {% for error in field.errors %}
+          <div class="container">
+            <label for="sign_upfield">{{error}}}}</label>
+          </div>
           {% endfor %}
-
+          {% endfor %}
         <br>
         <br>
         <button class="signup">Sign Up</button>

@@ -23,19 +23,15 @@
     display: flex;
     flex-direction: row;
 }
-.home{ 
-box-sizing: border-box;
+.home{  
+text-align: center; 
+margin-left: 72rem;
  
-width: 87px;
-height: 36px; 
-margin-left: 70rem;
-
-border: 2px solid #FFFFFF;
-border-radius: 10px;
 background-color: transparent;
 color: white;
-font-size: 20px;
-padding: 15px;
+font-size: 15px;
+text-decoration: none; 
+border-color: transparent;
 }
 .container {
     color: #ffffff;

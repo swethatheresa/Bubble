@@ -1,3 +1,6 @@
+*{
+    font-family: 'Montserrat';
+}
 .row{
     display: flex;
     flex-direction: row;
@@ -15,7 +18,7 @@
     height: 100rem;
 }
 .three{
-    background-color: #201F1C; ;
+    background-color: #201F1C ;
     width: 20%;
     height: 100rem;
 }
@@ -70,10 +73,10 @@ color: #FFFFFF;
 .map{
     width:250px;
     height: 230px;
-    margin-left: 3rem;
-    background-color: rgb(95, 85, 71);
+    margin-left: 3rem; 
     color: white;
     margin-top: 5rem;
+    background-color: black;
 }
 .logout{ 
 
@@ -88,13 +91,17 @@ color: #FFFFFF;
     color: #F3C10E; 
     margin-left: 6rem;
     padding: 10px; 
-    margin-top: 5rem
+    margin-top: 5rem;
+    
+    font-size: 15px;
+    text-decoration: none; 
 }
 .search{
     width: 20rem;
     background-color: black;
     display: flex;
     flex-direction: row; 
+    margin-left: 4rem;
 }
 
 .w{

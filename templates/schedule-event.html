@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Schedule Event</title>
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  </head>
+  <body>
+    <div class="main" style="background-color: black;">
+      <div class="text">
+        <!-- <div class="heading"><pre>Schedule Event</pre></div> -->
+        <div class="heading" style="display: flex;flex-direction: row;"><pre style="color: white;font-family: Montserrat;font-style: normal;
+            font-weight: 700;
+            font-size: 58px;
+            line-height: 71px;">Schedule</pre><pre style="color: #F3C10E;font-family: Montserrat;font-style: normal;
+            font-weight: 700;
+            font-size: 58px;
+            line-height: 71px;"> Event</pre></div>
+      </div> 
+      <form action="">
+        <div class="container">
+            
+            <label for="Name" >Enter your Name</label>
+            <br>
+            <input type="text" placeholder="Name" name="name" class="">
+            <br>
+            
+            <label for="starttime">Enter Start Time</label>
+            <br>
+            <input type="text" placeholder="Start-Time" name="starttime">
+            
+            <br>
+            
+            <label for="endtime">Enter End Time</label>
+            <br>
+            <input type="password" placeholder="End-Time" name="endtime">
+            <br>
+            
+
+            <label for="date">Enter Date</label>
+            <br>
+            <input type="text" placeholder="Date" name="date" >
+            <br>
+
+        </div>
+        <br>
+        <br>
+        <button class="signup">Schedule</button>
+      </form>
+</div>
+</body>
+</html>

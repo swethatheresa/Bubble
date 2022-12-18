@@ -6,19 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="stylesheet" href="{% static 'style1.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <title>Document</title>
 </head>
 <body>
     <div class="full">
         <div>
-            <h1 class="title">PROJECT NAME</h1>
-            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </p>
+            <h1 class="title" style ="color: white;font-weight: 700;font-size: 64px;line-height: 78px;letter-spacing: 0.05em;">BUBBLE</h1>
+            
+            <div class="heading" style="display: flex;flex-direction: row;margin-left: 6rem;margin-top: -1rem;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 20px;line-height: 24px;"><pre style="color: white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 20px;line-height: 24px;">EVERYTHING IN A </pre><pre style="color: #F3C10E;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 20px;line-height: 24px;">BUBBLE</pre></div>
+            <p class="desc" style ="margin-top: 2rem;font-size: 16px;font-weight: 300;line-height: 20px;letter-spacing: 0.03em;">Can't keep track of the events you registered? Want to know more and meet more people who are interested in the same field as you are ? Wish you could know about the events happening around you at a single click? BUBBLE would be a solution. Sign Up to register.</p>
         </div>
         <div class="loginp">
             <form action="" method="POST">      
                 {% csrf_token %}      
-                <h1 class="x"><pre>Sign In</pre></h1>
-                <h1 class="y">Login with your credentials</h1>
+                <h1 class="x" ><pre style ="color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 32px;line-height: 39px;">Sign In</pre></h1>
+                <h1 class="y" style ="color:white;font-family: 'Montserrat';font-style: normal;font-weight: 400;font-size: 16px;line-height: 20px;">Login with your credentials</h1>
                 <center class="square"> 
                 <div class="">
                     <input type="text" name="email" placeholder="e-mail" class="email"/> 
@@ -26,7 +29,7 @@
                     <input type="password" name="password" placeholder="password" class="password" /> 
                 <br></br>
                 <pre class="l">Don't have an account ?<a href="{% url 'signup' %}" class="sign">Sign Up</a></pre>
-                <Link><button type="submit" class="login">LOGIN</button></Link>
+                <Link><button type="submit" class="login" style ="color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 24px;line-height: 29px;">Sign In</button></Link>
                 </div>
                 </center> 
             </form>

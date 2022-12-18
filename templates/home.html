@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'style5.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: #000000;">
     <div class="row">
-        <div class="one">
+        <div class="one" style="width: 450px;height: 1600px;background-color: #3a3938;">
             <div class="row" style="margin-left: 3rem;margin-top: 3rem;">
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -20,44 +21,48 @@
                 </div>
 
                 <div>
-                    <h1 class="d">{{request.user.email}}</h1>
+                    <h1 class="d" style ="color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 24px;line-height: 29px;">{{request.user.email}}</h1>
                 </div>
             </div>
-            <hr style="background-color: rgb(208, 175, 12);border-color: transparent;height: 1px;width: 150px;margin-top: -97rem;margin-left: 3rem;">
-            <h1 class="d" style="margin-left: 3rem;margin-top: 5rem;">Create</h1>
+            <hr style="background-color: rgb(208, 175, 12);border-color: transparent;height: 1px;width: 320px;margin-top: -97rem;margin-left: 3rem;">
+            <h1 class="d" style="margin-left: 3rem;margin-top: 5rem;color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 24px;line-height: 29px;">Create</h1>
             <div class="grid">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-dot" viewBox="0 0 16 16">
                 <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
             </svg>
-            <a class="post" style="text-decoration: none;" href="{% url 'create-post' %}">Post</a>
+            <a class="post" style="text-decoration: none;margin-left: -11rem;" href="{% url 'create-post' %}">Post</a>
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-dot" viewBox="0 0 16 16" style="margin-top: 1rem;">
                 <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
             </svg>
-            <a class="post" style="text-decoration: none;" href="{% url 'create-room' %}"><pre>Talk Room</pre></a>
+            <a class="post" style="text-decoration: none;margin-left: -11rem;" href="{% url 'create-room' %}"><pre>Talk Room</pre></a>
             </div>
 
              
-            <h1 class="d" style="margin-left: 3rem;margin-top: 5rem;"><pre>Talkrooms Joined</pre></h1>
+            <h1 class="d" style="margin-left: 3rem;margin-top: 5rem;color:white;font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 24px;line-height: 29px;"><pre>Talkrooms Joined</pre></h1>
             <div class="grid">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#F3C10E" class="bi bi-dot" viewBox="0 0 16 16">
                 <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
             </svg>
-            <h1 class="l" style="margin-top: -.5rem;"><pre>Nueral Networking</pre></h1>
+            <h1 class="l" style="margin-top: -.5rem;margin-left: -9rem;"><pre>Nueral Networking</pre></h1>
             </div>
 
-            <div class="map">
-                <iframe src="https://maps.google.com/maps?q=Nemmara&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width=230 height=250></iframe>
+            <div class="map" style="background-color: #3a3938;;">
+                <iframe src="https://maps.google.com/maps?q={{request.user.city}}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width=300 height=250></iframe>
             </div>
-            <div class="logout"><a style="text-decoration: none;" href="{% url 'logout' %}"class="">Logout</a></div>
+            <div class="logout" style="color: #F3C10E;padding-left: 20px;background-color: #3a3938;"><a  href="{% url 'logout' %}" style="color: #F3C10E;text-decoration: none;background-color: #3a3938;">Logout</a></div>
+             
         </div>
         <vr style="width: 3px;"></vr>
 
-        <div class="two">
+        <div class="two" style="width: 820px;overflow-x: hidden;
+        overflow-y: auto;height: 1024px;">
 
-            <div class="search">  
+            <form action="{% url 'home' %}" method="GET">
+     
+    <div class="search" style="margin-left:44rem;">  
                  
                 <div >
-                    <input type="text" placeholder="Search for field of interest" class="w">
+                    <input name="q" type="text" placeholder="Search for field of interest" class="w">
                 </div>
                 <spacer type="horizontal" width="100" height="100"></spacer>
                 <div class="s">
@@ -69,47 +74,48 @@
                 </div>
                  
             </div>
+            </form>
         {% for post in posts %}
             <div class="column">
             <div class="row">
                 <div class="row" style="margin-left: 3rem;margin-top: 3rem;">
                     <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person-circle" style="margin-left:50px"viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                     </svg>
                     </div>
                     <div>
-                        <h1 class="d" style="color: #F3C10E;margin-top: -.25rem;">{{post.host.email}}<br><h1 class="d" style=" margin-top: -1rem;">{{post.city}}</h1></h1>
+                        <h1 class="d" style="color: #F3C10E;margin-top: -.25rem;font-weight: 500;font-size: 16px;line-height: 20px;">{{post.host.email}}<br><h1 class="d" style=" margin-top: -1rem;font-weight: 300;font-size: 12px;line-height: 15px;">{{post.city}}</h1></h1>
                     </div>
                 </div>
                 
             
             </div>
-                <div>
+                <div style="color: aqua;">
                     <center><img src="{{post.image.url}}" class="image"></center>
                 </div>
             </div>  
-        <div style="margin-left: 34rem;margin-top: 2rem;">
-            <a class="jt">Join Talkroom</a>
+        <div style="margin-left: 30rem;margin-top: 2rem;">
+            <a href="{% url 'join' post.room_id %}" style="font-family: 'Montserrat';font-style: normal;font-weight: 700;font-size: 14px;line-height: 17px;color: #000000;"class="jt">Join Talkroom</a>
             <a class="se">Schedule event</a>
         </div>
 
         <div>
-            <p class="desc5">{{post.caption}}</p>
+            <p class="desc5" style="margin-left: 5rem;margin-top: -2rem;width:400px">{{post.caption}}</p>
         </div>
         {% endfor %}
         </div>
 
-        <div class="three">
+        <div class="three" style="width: 300px;height: 1600px;">
             <div class="jt" style="margin-left: 8rem; margin-top: 2rem;">
-                <a style="text-decoration: none;" href="{% url 'room' %}" >Talk rooms</a>
+                <a style="text-decoration: none;color: black ; font-weight: 700;font-size: 16px;line-height: 20px;" href="{% url 'room' %}" >Talk rooms</a>
             </div>
-            <div class="cal">Calender</div>
-            <div class="map">
+            <div class="cal" style="font-size:28px;font-weight:700;">Calender</div>
+            <div class="map" style="background-color: #201F1C;margin-top: 0rem;">
                 <a target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NDlhcm1uZTJ2aXB0cHBiNmNlZ2I4NmU3Z2MgNTFiOGUxYTlkYjgxNjFiNGNmNzhkYTlkYmE4MDJiNDMzNWE5YjY1YTFhYTNmOTU1Njg3NGFmNDc2ZWFlOTNlNkBn&amp;tmsrc=51b8e1a9db8161b4cf78da9dba802b4335a9b65a1aa3f9556874af476eae93e6%40group.calendar.google.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif"></a>
                 <!-- <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23000000&ctz=Asia%2FKolkata&showTitle=0&showPrint=0&showCalendars=0&showTz=0&showNav=1&showTabs=0&src=NTFiOGUxYTlkYjgxNjFiNGNmNzhkYTlkYmE4MDJiNDMzNWE5YjY1YTFhYTNmOTU1Njg3NGFmNDc2ZWFlOTNlNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23D81B60" style="border-width:0" width="230" height="200" frameborder="0" scrolling="no"></iframe> -->
-                <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23000000&ctz=Asia%2FKolkata&showTitle=0&showPrint=0&showCalendars=0&showTz=0&showNav=1&showTabs=0&src=swethatheresa123@gmail.com&color=%23D81B60" style="border-width:0" width="230" height="200" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23000000&ctz=Asia%2FKolkata&showTitle=0&showPrint=0&showCalendars=0&showTz=0&showNav=1&showTabs=0&src={{post.host.email}}&color=%23D81B60" style="border-width:0" width="230" height="200" frameborder="0" scrolling="no"></iframe>
             </div>
             <h1 class="events"><pre>Events :</pre></h1>
             <div class="row" style="justify-content: space-between;margin-left: 2rem;">

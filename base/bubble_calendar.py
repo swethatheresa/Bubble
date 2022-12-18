@@ -12,27 +12,23 @@ pickle.dump(credentials,open("cal_cred.pkl","wb"))
 #credentials=pickle.load(open("cal_cred.pkl","rb"))
 service=build("calendar","v3",credentials=credentials)
 
-# result = service.calendarList().list().execute()
-# user_calendar_id=result['items'][0]['id']
-# print(user_calendar_id)
-# res=service.events().list(calendarId=user_calendar_id).execute()
-# print(res['items'][0])
-# from datetime import datetime,timedelta
-# start_time=datetime(2022,12,20,14,30,0)
-# end_time=datetime(2022,12,20,15,30,0)
-# #start_time=datetime(start_year,start_month,start_day,start_hour,start_min,start_sec)
-# #end_time=datetime(end_year,end_month,end_day,end_hour,end_min,end_sec)
+result = service.calendarList().list().execute()
+user_calendar_id=result['items'][0]['id']
+res=service.events().list(calendarId=user_calendar_id).execute()
+from datetime import datetime,timedelta
+start_time=datetime(year,month,date)
+topic=
 event = {
-  'summary': '30 days of machine learning',
+  'summary': topic,
   'location': 'none',
   'description': 'none',
   'start': {
-    # 'dateTime': start_time.strftime("%Y-%m-&dT%H:%M:%S"),
+    # 'dateTime': start_time.strftime("%Y-%m-&dT12:00:00"),
     'dateTime': '2022-12-24T09:00:00-07:00',
     'timeZone': 'Asia/Kolkata',
   },
   'end': {
-    #'dateTime': end_time.strftime("%Y-%m-&dT%H:%M:%S"),
+    #'dateTime': end_time.strftime("%Y-%m-&dT%12:30:00"),
     'dateTime': '2022-12-24T10:00:00-07:00',
     'timeZone': 'Asia/Kolkata',
   },
