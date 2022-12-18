@@ -8,10 +8,13 @@ The user is first welcomed to a sign in screen where he/she can enter credential
 # Cloning the repository
 --> Clone the repository using the command below :
 
-git clone https://github.com/divanov11/StudyBud.git
+
+https://github.com/swethatheresa/Tink-her-hack-Tech3
+
 --> Move into the directory where we have the project files :
 
 cd StudyBud
+
 --> Create a virtual environment :
 
 # Let's install virtualenv first
