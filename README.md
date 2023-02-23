@@ -13,7 +13,7 @@ https://github.com/swethatheresa/Tink-her-hack-Tech3
 
 --> Move into the directory where we have the project files :
 
-cd StudyBud
+cd tech3
 
 --> Create a virtual environment :
 
